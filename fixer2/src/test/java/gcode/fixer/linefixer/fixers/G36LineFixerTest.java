@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.junit.Test;
 
@@ -28,7 +29,10 @@ public class G36LineFixerTest {
 	public void testG36GcodeModification_HappyPath() {
 		Collection<String> result = testee.fix(G36_GCode_orig);
 		assertNotNull("Returned collection should not be null", result);
-		assertEquals("Returned collection should contain only one line", 1, result.size());
-		assertEquals("M06 T10", result.iterator().next());
+		assertEquals("Returned collection should contain three lines", 3, result.size());
+		Iterator<String> it = result.iterator(); 
+		assertEquals("G00 Z30.0 F200.0", it.next());
+		assertEquals("G00 X0 Y0 F200.0", it.next());
+		assertEquals("M06 T10", it.next());
 	}
 }
