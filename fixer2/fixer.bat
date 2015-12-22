@@ -1,2 +1,2 @@
-java -jar fixer.jar -input input.txt -output output.txt
+java -jar fixer.jar -input ./input.txt
 pause
